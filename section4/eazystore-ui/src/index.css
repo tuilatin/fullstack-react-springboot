@@ -65,7 +65,7 @@ body {
   color: var(--primary-color);
 }
 
-.eazynav {
+.nav {
   display: none;
   position: absolute;
   top: 100%;
@@ -76,11 +76,11 @@ body {
   z-index: 10;
 }
 
-.eazynav.open {
+.nav.open {
   display: block;
 }
 
-.eazynav ul {
+.nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -89,7 +89,7 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .eazynav {
+  .nav {
     display: flex;
     position: static;
     width: auto;
@@ -98,7 +98,7 @@ body {
   }
 }
 
-.navLink {
+.nav-link {
   display: block;
   text-align: center;
   font-size: 18px;
@@ -108,7 +108,7 @@ body {
   transition: color 0.3s ease;
 }
 
-.navLink:hover {
+.nav-link:hover {
   color: var(--hover-color);
 }
 
@@ -241,7 +241,3 @@ body {
   font-size: var(--font-size-lg);
   color: var(--primary-color);
 }
-
-/* .my-heading {
-  background-color: aquamarine;
-} */

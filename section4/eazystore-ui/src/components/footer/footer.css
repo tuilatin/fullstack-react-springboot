@@ -13,18 +13,6 @@
   transition: color 0.3s;
 }
 
-.my-heading {
-  text-align: center;
-}
-
-.primary-color {
-  color: #5b21b6;
-}
-
-.secondary-color {
-  color: #dc2626;
-}
-
 .footer a:hover {
   color: #1a202c;
 }

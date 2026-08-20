@@ -9,30 +9,30 @@ export const Header = () => {
           <FontAwesomeIcon icon={faTags} className="fa-icon" />
           <span className="brand-title">Eazy Stickers</span>
         </a>
-        <nav className="eazynav">
+        <nav className="nav">
           <ul>
             <li>
-              <a href="/" className="navLink">
+              <a href="/" className="nav-link">
                 Home
               </a>
             </li>
             <li>
-              <a href="/about" className="navLink">
+              <a href="/about" className="nav-link">
                 About
               </a>
             </li>
             <li>
-              <a href="/contact" className="navLink">
+              <a href="/contact" className="nav-link">
                 Contact
               </a>
             </li>
             <li>
-              <a href="/login" className="navLink">
+              <a href="/login" className="nav-link">
                 Login
               </a>
             </li>
             <li>
-              <a href="/cart" className="navLink">
+              <a href="/cart" className="nav-link">
                 <FontAwesomeIcon icon={faShoppingBasket} />
               </a>
             </li>
