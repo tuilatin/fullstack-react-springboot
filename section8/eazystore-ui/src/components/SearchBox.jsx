@@ -15,7 +15,9 @@ export default function SearchBox({ label, placeholder, value, handleSearch }) {
            focus:ring-dark focus:outline-none text-gray-800"
         placeholder={placeholder}
         value={value}
-        onChange={(event) => handleSearch(event.target.value)}
+        onChange={(event) => {
+          handleSearch(event.target.value);
+        }}
       />
     </div>
   );
