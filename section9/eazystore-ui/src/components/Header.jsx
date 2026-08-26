@@ -8,7 +8,9 @@ import {
 import { useState, useEffect } from "react";
 
 export default function Header() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") === "dark" ? "dark" : "light";
+  });
 
   const toggleTheme = () => {
     setTheme((prevTheme) => {
