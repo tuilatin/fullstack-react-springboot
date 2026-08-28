@@ -23,4 +23,4 @@ dist-ssr
 *.sw?
 
 # MySQL data
-eazystore-data/
+/section9/eazystore-data/
