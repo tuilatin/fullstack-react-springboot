@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState, useMemo } from "react";
 import ProductCard from "./ProductCard";
 import SearchBox from "./SearchBox";
 import Dropdown from "./Dropdown";
@@ -17,7 +17,7 @@ export default function ProductListings({ products }) {
     let filteredProducts = products.filter(
       (product) =>
         product.name.toLowerCase().includes(searchText.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchText.toLowerCase()),
+        product.description.toLowerCase().includes(searchText.toLowerCase())
     );
 
     return filteredProducts.slice().sort((a, b) => {
@@ -46,7 +46,7 @@ export default function ProductListings({ products }) {
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-12">
         <SearchBox
           label="Search"
-          placeholder="Search products"
+          placeholder="Search products..."
           value={searchText}
           handleSearch={(value) => handleSearchChange(value)}
         />

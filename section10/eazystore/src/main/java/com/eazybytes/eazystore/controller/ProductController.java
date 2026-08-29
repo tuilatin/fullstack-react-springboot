@@ -13,13 +13,13 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/products")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+// @CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
 
     private final IProductService iProductService;
 
     @GetMapping
-    public List<ProductDto> getProducts() { // DTO Pattern
+    public List<ProductDto> getProducts() throws InterruptedException { // DTO Pattern
         List<ProductDto> productList = iProductService.getProducts();
         return productList;
     }
