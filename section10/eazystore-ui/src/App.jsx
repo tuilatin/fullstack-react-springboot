@@ -12,7 +12,7 @@ function App() {
       {navigation.state === "loading" ? (
         <div className="flex items-center justify-center min-h-[852px]">
           <span className="text-4xl font-semibold text-primary dark:text-light">
-            Loading...
+            Loading........
           </span>
         </div>
       ) : (
