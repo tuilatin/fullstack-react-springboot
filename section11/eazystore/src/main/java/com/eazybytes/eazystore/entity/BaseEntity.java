@@ -22,7 +22,7 @@ import java.time.Instant;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
     @CreationTimestamp
     private Instant createdAt;
