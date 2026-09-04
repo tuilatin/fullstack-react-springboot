@@ -3,13 +3,15 @@ package com.eazybytes.eazystore.controller;
 import com.eazybytes.eazystore.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.RequestEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.validation.constraints.Size;
 import org.springframework.http.HttpHeaders;import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/dummy")
+@Validated
 public class DummyController {
     @PostMapping("/create-user")
     public String createUser(@RequestBody UserDto userDto) {
@@ -23,7 +25,7 @@ public class DummyController {
     }
 
     @GetMapping("/search")
-    public String searchUser(@RequestParam(required = false, defaultValue = "Guest",
+    public String searchUser(@Size(min = 5, max = 30) @RequestParam(required = false, defaultValue = "Guest",
             name ="name") String name) {
         return "Search for user : " + name;
     }

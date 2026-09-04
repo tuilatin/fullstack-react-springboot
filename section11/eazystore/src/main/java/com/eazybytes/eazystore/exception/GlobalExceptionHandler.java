@@ -1,6 +1,8 @@
 package com.eazybytes.eazystore.exception;
 
 import com.eazybytes.eazystore.dto.ErrorResponseDto;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -33,4 +36,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
 
     }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Map<String, String>> handleConstraintViolationException
+            (ConstraintViolationException exception){
+        Map<String, String> errors =new HashMap<>();
+        Set<ConstraintViolation<?>> constraintViolationSet = exception.getConstraintViolations();
+        constraintViolationSet.forEach(constraintViolation ->
+                errors.put(constraintViolation.getPropertyPath().toString(), constraintViolation.getMessage()));
+        return ResponseEntity.badRequest().body(errors);
+    }
+
 }
+
