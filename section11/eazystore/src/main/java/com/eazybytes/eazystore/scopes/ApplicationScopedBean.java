@@ -4,6 +4,7 @@ package com.eazybytes.eazystore.scopes;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.ApplicationScope;
 import org.springframework.web.context.annotation.RequestScope;
@@ -22,4 +23,5 @@ public class ApplicationScopedBean {
     public ApplicationScopedBean() {
         log.info("ApplicationScopedBean initialized");
     }
+
 }

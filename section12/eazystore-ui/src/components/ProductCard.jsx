@@ -1,10 +1,9 @@
 import React from "react";
 import Price from "./Price";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { CartContext } from "../store/cart-context.jsx";
+import { useCart } from "../store/cart-context.jsx";
 export default function ProductCard({ product }) {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useCart();
   return (
     <Link
       to={`/products/${product.productId}`}
