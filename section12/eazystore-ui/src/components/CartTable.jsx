@@ -11,6 +11,11 @@ export default function CartTable() {
     .reduce((acc, item) => acc + item.price * item.quantity, 0)
     .toFixed(2);
 
+  const updateCartQuantity = (productId, quantity) => {
+    const product = cart.find((item) => item.productId === productId);
+    addToCart(product, quantity - (product?.quantity || 0));
+  };
+
   return (
     <div className="min-h-80 max-w-4xl mx-auto my-8 w-full font-primary">
       <table className="w-full">
@@ -52,7 +57,7 @@ export default function CartTable() {
                   onChange={(e) =>
                     updateCartQuantity(
                       item.productId,
-                      parseInt(e.target.value, 10) || 1,
+                      parseInt(e.target.value, 10) || 1
                     )
                   }
                   className="w-16 px-2 py-1 border rounded-md focus:ring focus:ring-light dark:focus:ring-gray-600 dark:bg-gray-800 text-gray-900 dark:text-gray-100"

@@ -1,16 +1,17 @@
 import React from "react";
 import Price from "./Price";
 import { Link } from "react-router-dom";
-import { useCart } from "../store/cart-context.jsx";
+import { useCart } from "../store/cart-context";
+
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   return (
-    <Link
-      to={`/products/${product.productId}`}
-      state={{ product }}
-      className="w-72 rounded-md mx-auto border border-gray-300 dark:border-gray-600 shadow-md overflow-hidden flex flex-col bg-white dark:bg-gray-800 hover:border-primary dark:hover:border-lighter transition"
-    >
-      <Link className="relative w-full h-72 border-b border-gray-300 dark:border-gray-600">
+    <div className="w-72 rounded-md mx-auto border border-gray-300 dark:border-gray-600 shadow-md overflow-hidden flex flex-col bg-white dark:bg-gray-800 hover:border-primary dark:hover:border-lighter transition">
+      <Link
+        to={`/products/${product.productId}`}
+        state={{ product }}
+        className="relative w-full h-72 border-b border-gray-300 dark:border-gray-600"
+      >
         <img
           src={product.imageUrl}
           alt={product.name}
@@ -36,6 +37,6 @@ export default function ProductCard({ product }) {
           </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
