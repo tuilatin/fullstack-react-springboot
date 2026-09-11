@@ -18,6 +18,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> apiLogin(@RequestBody LoginRequestDto loginRequestDto){
 
-        return ResponseEntity.status(HttpStatus.OK).body(new LoginResponseDto(HttpStatus.OK.getReasonPhrase()));
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(new LoginResponseDto(HttpStatus.OK.getReasonPhrase(), null, null));
     }
 }

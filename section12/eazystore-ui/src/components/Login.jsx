@@ -1,6 +1,12 @@
 import React from "react";
 import PageTitle from "./PageTitle";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  Form,
+  useActionData,
+  useNavigation,
+  useNavigate,
+} from "react-router-dom";
 
 export default function Login() {
   const labelStyle =
@@ -13,7 +19,7 @@ export default function Login() {
         {/* Title */}
         <PageTitle title="Login" />
         {/* Form */}
-        <form className="space-y-6">
+        <Form method="POST" className="space-y-6">
           {/* Email Field */}
           <div>
             <label htmlFor="username" className={labelStyle}>
@@ -55,7 +61,7 @@ export default function Login() {
               Login
             </button>
           </div>
-        </form>
+        </Form>
 
         {/* Register Link */}
         <p className="text-center text-gray-600 dark:text-gray-400 mt-4">
