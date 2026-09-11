@@ -45,6 +45,7 @@ export default function Login() {
               type="text"
               name="username"
               placeholder="Your Username"
+              autoComplete="current-password"
               required
               className={textFieldStyle}
             />
@@ -60,6 +61,7 @@ export default function Login() {
               type="password"
               name="password"
               placeholder="Your Password"
+              autoComplete="current-password"
               required
               minLength={8}
               maxLength={20}
