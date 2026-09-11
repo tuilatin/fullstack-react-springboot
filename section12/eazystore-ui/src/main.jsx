@@ -20,6 +20,7 @@ import { productsLoader } from "./components/Home.jsx";
 import { contactAction } from "./components/Contact.jsx";
 import ProductDetail from "./components/ProductDetail.jsx";
 import { CartProvider } from "./store/cart-context.jsx";
+import { loginAction } from "./components/Login.jsx";
 
 const routeDefinitions = createRoutesFromElements(
   <Route path="/" element={<App />} errorElement={<ErrorPage />}>
@@ -27,10 +28,10 @@ const routeDefinitions = createRoutesFromElements(
     <Route path="/home" element={<Home />} loader={productsLoader} />
     <Route path="/about" element={<About />} />
     <Route path="/contact" element={<Contact />} action={contactAction} />
-    <Route path="/login" element={<Login />} />
+    <Route path="/login" element={<Login />} action={loginAction} />
     <Route path="/cart" element={<Cart />} />
     <Route path="/products/:productId" element={<ProductDetail />} />
-  </Route>
+  </Route>,
 );
 
 const appRouter = createBrowserRouter(routeDefinitions);
@@ -50,5 +51,5 @@ createRoot(document.getElementById("root")).render(
       theme={localStorage.getItem("theme") === "dark" ? "dark" : "light"}
       transition={Bounce}
     />
-  </StrictMode>
+  </StrictMode>,
 );

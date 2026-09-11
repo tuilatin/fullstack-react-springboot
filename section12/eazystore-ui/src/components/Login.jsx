@@ -1,4 +1,5 @@
-import React from "react";
+import React, { use, useEffect } from "react";
+import { toast } from "react-toastify";
 import PageTitle from "./PageTitle";
 import {
   Link,
@@ -7,8 +8,22 @@ import {
   useNavigation,
   useNavigate,
 } from "react-router-dom";
+import apiClient from "../api/apiClient";
 
 export default function Login() {
+  const actionData = useActionData();
+  const navigation = useNavigation();
+  const navigate = useNavigate();
+  const isSubmitting = navigation.state === "submitting";
+
+  useEffect(() => {
+    if (actionData?.success) {
+      navigate("/home");
+    } else if (actionData?.errors) {
+      toast.error(actionData.errors.message || "Login failed");
+    }
+  }, [actionData]);
+
   const labelStyle =
     "block text-lg font-semibold text-primary dark:text-light mb-2";
   const textFieldStyle =
@@ -56,9 +71,10 @@ export default function Login() {
           <div>
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full px-6 py-2 text-white dark:text-black text-xl rounded-md transition duration-200 bg-primary dark:bg-light hover:bg-dark dark:hover:bg-lighter"
             >
-              Login
+              {isSubmitting ? "Authenticating..." : "Login"}
             </button>
           </div>
         </Form>
@@ -76,4 +92,31 @@ export default function Login() {
       </div>
     </div>
   );
+}
+
+export async function loginAction({ request }) {
+  const data = await request.formData();
+  const loginData = {
+    username: data.get("username"),
+    password: data.get("password"),
+  };
+
+  try {
+    const response = await apiClient.post("/auth/login", loginData);
+    const { message, user, jwtToken } = response.data;
+    return { success: true, message, user, jwtToken };
+  } catch (error) {
+    if (error.response?.status === 401) {
+      return {
+        success: false,
+        errors: { message: "Invalid username or password" },
+      };
+    }
+    throw new Response(
+      error.response?.data?.message ||
+        error.message ||
+        "Failed to login. Please try again.",
+      { status: error.response?.status || 500 },
+    );
+  }
 }
