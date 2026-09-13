@@ -45,7 +45,7 @@ export default function Login() {
               type="text"
               name="username"
               placeholder="Your Username"
-              autoComplete="current-password"
+              autoComplete="username"
               required
               className={textFieldStyle}
             />
